@@ -21,6 +21,7 @@ namespace Steeltoe.Common.Discovery
     public enum DiscoveryClientType
     {
         EUREKA,
+        KUBERNETES,
         UNKNOWN
     }
 

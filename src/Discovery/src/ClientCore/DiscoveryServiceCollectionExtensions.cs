@@ -32,6 +32,7 @@ using Steeltoe.Discovery.Eureka;
 using System;
 using System.Linq;
 using System.Threading;
+using Steeltoe.Discovery.KubernetesBase;
 
 namespace Steeltoe.Discovery.Client
 {
@@ -72,6 +73,10 @@ namespace Steeltoe.Discovery.Client
                 services.AddSingleton<IOptionsMonitor<EurekaInstanceOptions>>(new OptionsMonitorWrapper<EurekaInstanceOptions>(regOptions));
 
                 AddEurekaServices(services, lifecycle);
+            }
+            else if (discoveryOptions.ClientType == DiscoveryClientType.KUBERNETES)
+            {
+                AddKubernetesService(services, lifecycle);
             }
             else
             {
@@ -232,6 +237,19 @@ namespace Steeltoe.Discovery.Client
 
                 EurekaPostConfigurer.UpdateConfiguration(config, einfo, options, einfo?.ApplicationInfo ?? appInfo);
             });
+        }
+
+        private static void AddKubernetesService(IServiceCollection services, IDiscoveryLifecycle lifecycle)
+        {
+            services.AddSingleton<IDiscoveryClient, KubernetesDiscoveryClient>();
+            if (lifecycle == null)
+            {
+                services.AddSingleton<IDiscoveryLifecycle, ApplicationLifecycle>();
+            }
+            else
+            {
+                services.AddSingleton(lifecycle);
+            }
         }
 
         private static void AddEurekaServices(IServiceCollection services, IDiscoveryLifecycle lifecycle)

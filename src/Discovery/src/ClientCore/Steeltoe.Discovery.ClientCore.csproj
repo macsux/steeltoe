@@ -18,6 +18,7 @@
   <ItemGroup Condition="'$(CI_BUILD)' == ''">
     <ProjectReference Include="..\EurekaBase\Steeltoe.Discovery.EurekaBase.csproj" />
     <ProjectReference Include="..\ConsulBase\Steeltoe.Discovery.ConsulBase.csproj" />
+    <ProjectReference Include="..\KubernetesBase\Steeltoe.Discovery.KubernetesBase.csproj" />
     <ProjectReference Include="..\..\..\Connectors\src\ConnectorBase\Steeltoe.ConnectorBase.csproj" />
   </ItemGroup>
 
@@ -25,5 +26,7 @@
     <PackageReference Include="Steeltoe.ConnectorBase" Version="$(SteeltoeVersion)$(SteeltoeVersionSuffix)" />
     <PackageReference Include="Steeltoe.Discovery.EurekaBase" Version="$(SteeltoeVersion)$(SteeltoeVersionSuffix)" />
     <PackageReference Include="Steeltoe.Discovery.ConsulBase" Version="$(SteeltoeVersion)$(SteeltoeVersionSuffix)" />
+    <PackageReference Include="Steeltoe.Discovery.KubernetesBase" Version="$(SteeltoeVersion)$(SteeltoeVersionSuffix)" />
   </ItemGroup>
+
 </Project>

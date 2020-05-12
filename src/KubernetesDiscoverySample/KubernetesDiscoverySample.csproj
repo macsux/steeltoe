@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Discovery\src\ClientCore\Steeltoe.Discovery.ClientCore.csproj" />
+    <ProjectReference Include="..\Discovery\src\KubernetesBase\Steeltoe.Discovery.KubernetesBase.csproj" />
+    <ProjectReference Include="..\Kubernetes\src\InformersCore\Steeltoe.Kubernetes.InformersCore.csproj" />
+  </ItemGroup>
+
+
+</Project>
